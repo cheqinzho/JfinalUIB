@@ -41,6 +41,9 @@ public class UserService extends BaseService {
 			byte[] encryptedPassword = ToolSecurityPbkdf2.getEncryptedPassword(password, salt);
 			user.set("salt", salt);
 			user.set("password", encryptedPassword);
+			//登录时需要用上这两个字段做判断
+			user.set("errorcount", 0);
+			user.set("status", "1");
 
 			// 保存用户信息
 			userInfo.save();
